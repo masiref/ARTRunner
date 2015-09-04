@@ -1,0 +1,31 @@
+#!/bin/bash
+while [[ $# > 1 ]]
+do
+	key="$1"
+
+	case $key in
+	    -u|--url)
+	    URL="$2"
+	    shift
+	    ;;
+	    -r|--report)
+	    REPORT="$2"
+	    shift
+	    ;;
+	    -l|--lang)
+	    LANGUAGE="$2"
+	    shift
+	    ;;
+	    *)
+	    # unknown option
+	    ;;
+	esac
+	shift
+done
+
+# echo APPLICATION URL  = "${URL}"
+# echo REPORT FOLDER = "${REPORT}"
+# echo LANGUAGE = "${LANGUAGE}"
+
+export BEHAT_PARAMS='{"extensions":{"Behat\\MinkExtension":{"base_url":"'$URL'"}}}'
+./vendor/bin/behat -f progress -o "${REPORT}/report.out" --no-colors --lang="${LANGUAGE}"

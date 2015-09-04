@@ -1,0 +1,9 @@
+default:
+    formatters:
+        pretty:
+        progress:
+    extensions:
+        Behat\MinkExtension:
+            sessions:
+                default:
+                    selenium2: ~
