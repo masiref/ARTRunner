@@ -1,4 +1,6 @@
 /vendor/
 /composer.phar
 /reports/
+/features/**/*.feature
 
+/nbproject/

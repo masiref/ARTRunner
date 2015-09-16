@@ -23,9 +23,5 @@ do
 	shift
 done
 
-# echo APPLICATION URL  = "${URL}"
-# echo REPORT FOLDER = "${REPORT}"
-# echo LANGUAGE = "${LANGUAGE}"
-
 export BEHAT_PARAMS='{"extensions":{"Behat\\MinkExtension":{"base_url":"'$URL'"}}}'
-./vendor/bin/behat -f progress -o "${REPORT}/report.out" --no-colors --lang="${LANGUAGE}"
+./vendor/bin/behat -f pretty -o "${REPORT}/report.out" --no-colors --lang="${LANGUAGE}"
