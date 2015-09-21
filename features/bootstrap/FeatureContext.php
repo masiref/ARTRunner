@@ -147,4 +147,11 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
         return $this->assertFieldNotContains($field, "");
     }
 
+    /**
+     * @Then I should be on :url [regular expression]
+     */
+    public function iShouldBeOnRegularExpression($url) {
+        return $this->assertUrlRegExp($url);
+    }
+
 }
