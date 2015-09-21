@@ -12,15 +12,6 @@ use Behat\MinkExtension\Context\MinkContext;
  */
 class FeatureContext extends MinkContext implements Context, SnippetAcceptingContext {
 
-    private $output;
-
-    /**
-     * Initializes context.
-     *
-     * Every scenario gets its own context instance.
-     * You can also pass arbitrary arguments to the
-     * context constructor through behat.yml.
-     */
     public function __construct() {
 
     }
@@ -140,6 +131,20 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
      */
     public function iShouldNotSeeField($locator) {
         return $this->iShouldNotSeeObject($locator, 'field');
+    }
+
+    /**
+     * @Then :field field should be empty
+     */
+    public function fieldShouldBeEmpty($field) {
+        return $this->assertFieldContains($field, "");
+    }
+
+    /**
+     * @Then :field field should not be empty
+     */
+    public function fieldShouldNotBeEmpty($field) {
+        return $this->assertFieldNotContains($field, "");
     }
 
 }
